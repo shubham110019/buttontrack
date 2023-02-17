@@ -13,12 +13,12 @@ for (let i = 0; i < links.length; i++) {
 
   // Initialize the link data object
   const data = {
-
     id: linkId,
     pagelink: currentUrl,
     redirectLink: link.getAttribute('href'),
     text: link.textContent.trim(),
-    clicks: parseInt(localStorage.getItem(linkId)) || 0
+    clicks: parseInt(localStorage.getItem(linkId)) || 0,
+    date: new Date().toISOString()
   };
 
   // Attach a click event listener to the link
