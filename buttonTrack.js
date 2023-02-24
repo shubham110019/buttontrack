@@ -7,7 +7,7 @@ localStorage.setItem('visitorId', visitorId);
 function generateVisitorId() {
   return Math.random().toString(36).substr(2, 9);
 }
-	
+  
 const currentUrl = window.location.href;
 
 
@@ -41,8 +41,9 @@ for (let i = 0; i < links.length; i++) {
 
   // Initialize the link data object
   const data = {
-    id: linkId,
+    id: visitorId,
     userId: visitorId,
+    buttonId: linkId,
     pagelink: currentUrl,
     referrer: document.referrer,
     redirectLink: link.getAttribute('href'),
@@ -67,4 +68,3 @@ for (let i = 0; i < links.length; i++) {
   // Add the link data to the array
   linkData.push(data);
 }
-
