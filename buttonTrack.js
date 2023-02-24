@@ -1,5 +1,21 @@
 const currentUrl = window.location.href;
 
+// Get the page visit history from local storage
+let visitHistory = JSON.parse(localStorage.getItem('visitHistory')) || [];
+
+// If this is the first page visited, add it to the visit history
+if (visitHistory.length === 0) {
+  visitHistory.push(currentUrl);
+}
+
+// If the current page is not already in the visit history, add it
+if (!visitHistory.includes(currentUrl)) {
+  visitHistory.push(currentUrl);
+}
+
+// Save the updated visit history to local storage
+localStorage.setItem('visitHistory', JSON.stringify(visitHistory));
+
 const links = document.querySelectorAll('a');
 
 // Create an array to store link data
@@ -19,6 +35,7 @@ for (let i = 0; i < links.length; i++) {
     redirectLink: link.getAttribute('href'),
     text: link.textContent.trim(),
     clicks: parseInt(localStorage.getItem(linkId)) || 0,
+    visitHistory: visitHistory,
     date: new Date().toISOString()
   };
 
