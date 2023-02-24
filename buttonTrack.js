@@ -15,6 +15,7 @@ for (let i = 0; i < links.length; i++) {
   const data = {
     id: linkId,
     pagelink: currentUrl,
+    referrer: document.referrer,
     redirectLink: link.getAttribute('href'),
     text: link.textContent.trim(),
     clicks: parseInt(localStorage.getItem(linkId)) || 0,
