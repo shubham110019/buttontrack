@@ -1,4 +1,16 @@
+let visitorId = localStorage.getItem('visitorId') || generateVisitorId();
+
+// Save the visitor id to localStorage
+localStorage.setItem('visitorId', visitorId);
+
+// Function to generate a new visitor id
+function generateVisitorId() {
+  return Math.random().toString(36).substr(2, 9);
+}
+	
 const currentUrl = window.location.href;
+
+
 
 // Get the page visit history from local storage
 let visitHistory = JSON.parse(localStorage.getItem('visitHistory')) || [];
@@ -30,6 +42,7 @@ for (let i = 0; i < links.length; i++) {
   // Initialize the link data object
   const data = {
     id: linkId,
+    userId: visitorId,
     pagelink: currentUrl,
     referrer: document.referrer,
     redirectLink: link.getAttribute('href'),
@@ -54,3 +67,4 @@ for (let i = 0; i < links.length; i++) {
   // Add the link data to the array
   linkData.push(data);
 }
+
